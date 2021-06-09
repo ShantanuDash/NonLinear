@@ -1,4 +1,4 @@
-# NonLinear
+{% include head.html %}
 Nonlinear dynamics files
 ## [Find pendulum files here.(Confused? Just click this line)](https://shantanu.rocks/NonLinear/pendulum.html)
 ## Don't forget to wait a bit for the interactive widgets to load!!
