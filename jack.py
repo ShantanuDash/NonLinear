@@ -56,8 +56,8 @@ def jack_eval(epsilon1):
     epsilon2=8
     stable=[]
     unstable=[]
-    a=(epsilon1*epsilon2+50 +sqrt((epsilon1**2)*(epsilon2**2)-100))/(2*epsilon1*epsilon2)
-    b=(epsilon1*epsilon2+50 -sqrt((epsilon1**2)*(epsilon2**2)-100))/(2*epsilon1*epsilon2)
+    a=((epsilon1*epsilon2+50 +sqrt((epsilon1**2)*(epsilon2**2)-100))/(2*epsilon1*epsilon2))**0.5
+    b=((epsilon1*epsilon2+50 -sqrt((epsilon1**2)*(epsilon2**2)-100))/(2*epsilon1*epsilon2))**0.5
     
     
     #first trivial fixed point
