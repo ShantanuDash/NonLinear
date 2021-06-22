@@ -137,7 +137,7 @@ import numpy as np
 plt.figure(figsize=(16,7))
 stable=[]
 unstable=[]
-for val in np.linspace(2,8,100):
+for val in np.linspace(0,8,100):
     s_temp,u_temp=jack_eval(val)
     #s_temp=np.array(s_temp)
     #u_temp=np.array(u_temp)
