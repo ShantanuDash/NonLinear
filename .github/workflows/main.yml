@@ -1,0 +1,28 @@
+name: compile-jpg
+
+on:
+  #page_build:
+  #pull_request:
+  push:
+    branches:
+      - py
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: sudo mkdir output
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          #architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      - run: python jack.py
+      - run: sudo cp phase.jpg output
+      - name: upload img
+        uses: actions/upload-artifact@v2
+        with:
+          name: IMG
+          path: output/phase.jpg
