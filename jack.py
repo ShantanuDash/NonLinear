@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 from sympy.abc import c,x,y,u,v,omega,rho,beta
@@ -9,7 +9,7 @@ from sympy import Matrix, im, re, symbols, sqrt, init_printing
 init_printing()
 
 
-# In[2]:
+# In[4]:
 
 
 ep1,ep2=symbols("epsilon_1 epsilon_2")
@@ -21,20 +21,20 @@ X = Matrix([e1,e2,e3,e4])
 F=X.jacobian([x,y,u,v])
 
 
-# In[3]:
+# In[5]:
 
 
 F
 
 
-# In[5]:
+# In[6]:
 
 
 jack=F.subs([(beta,1),(rho,1),(c,1),(omega,5)])
 jack
 
 
-# In[6]:
+# In[7]:
 
 
 def check_stability(jack):
@@ -49,7 +49,7 @@ def check_stability(jack):
     return k
 
 
-# In[7]:
+# In[20]:
 
 
 def jack_eval(epsilon1):
@@ -84,42 +84,46 @@ def jack_eval(epsilon1):
     x5=(-5*b)/(-25+b*b*epsilon1*epsilon2)
     y5=-b
     u5=(5*b*epsilon2)/(-25+b*b*epsilon1*epsilon2)
+    if im(x2)==0:
+        x1=float(x1)
+        y1=float(y1)
+        u1=float(u1)
+        x2=float(x2)
+        y2=float(y2)
+        u2=float(u2)
 
-    x1=float(x1)
-    y1=float(y1)
-    u1=float(u1)
+        x3=float(x3)
+        y3=float(y3)
+        u3=float(u3)
+
+        x4=float(x4)
+        y4=float(y4)
+        u4=float(u4)
+
+        x5=float(x5)
+        y5=float(y5)
+        u5=float(u5)
     
-    x2=float(x2)
-    y2=float(y2)
-    u2=float(u2)
-    
-    x3=float(x3)
-    y3=float(y3)
-    u3=float(u3)
-    
-    x4=float(x4)
-    y4=float(y4)
-    u4=float(u4)
-    
-    x5=float(x5)
-    y5=float(y5)
-    u5=float(u5)
-    
-    #print(x1,float(x2),float(x3),float(x4),float(x5))
-    xi=[[x1,y1,u1],[x2,y2,u2],[x3,y3,u3],[x4,y4,u4],[x5,y5,u5]]
-    #print("Set of Fixed Points: ",xi)
-    i=1
-    for point in xi:
-        j=jack.subs([(x,point[0]),(y,point[1]),(u,point[2]),(ep2,epsilon2),(ep1,epsilon1)])
-        #print(f"\nx({i}):")
-        #print(point[0])
+        #print(x1,float(x2),float(x3),float(x4),float(x5))
+        xi=[[x1,y1,u1],[x2,y2,u2],[x3,y3,u3],[x4,y4,u4],[x5,y5,u5]]
+        #print("Set of Fixed Points: ",xi)
+        i=1
+        for point in xi:
+            j=jack.subs([(x,point[0]),(y,point[1]),(u,point[2]),(ep2,epsilon2),(ep1,epsilon1)])
+            #print(f"\nx({i}):")
+            #print(point[0])
+            if check_stability(j)==0:
+                stable.append(point[0])
+            else:
+                unstable.append(point[0])
+
+            i+=1
+    else:
+        j=jack.subs([(x,x1),(y,y1),(u,u1),(ep2,epsilon2),(ep1,epsilon1)])
         if check_stability(j)==0:
-            stable.append(point[0])
-            print(point[0])
+            stable.append(x1)
         else:
-            unstable.append(point[0])
-            
-        i+=1
+            unstable.append(x1)
     return [stable,unstable]
 
 
@@ -129,12 +133,12 @@ def jack_eval(epsilon1):
 jack_eval(5)
 
 
-# In[26]:
+# In[ ]:
 
 
 import matplotlib.pyplot as plt
 import numpy as np
-plt.figure(figsize=(16,7))
+#plt.figure(figsize=(16,7))
 stable=[]
 unstable=[]
 for val in np.linspace(0,8,100):
@@ -154,17 +158,12 @@ for val in np.linspace(0,8,100):
 #######################################################
 plt.title("x vs $\epsilon_{1}$ with $\epsilon_{1}=8$")        
 #plt.legend()
-#plt.show()
-
-
-# In[27]:
-
-
-plt.savefig("phase.jpg",dpi=1000)
+plt.show()
 
 
 # In[ ]:
 
 
+plt.savefig("phase.jpg",dpi=1200)
 
 
