@@ -1,11 +1,11 @@
 name: Manually triggered workflow To Run a python file
-description:  Manually triggered workflow To Run a python file which is computationally infeasible on my computer
+#description:  Manually triggered workflow To Run a python file which is computationally infeasible on my computer
 on:
   workflow_dispatch:
     inputs:
       file-name:
         description: 'Name of the input file(with extention)'
-        default: 'f'ile.py
+        default: 'file.py'
         required: true
 
 jobs:
