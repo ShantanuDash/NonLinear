@@ -9,7 +9,7 @@ on:
         required: true
 
 jobs:
-  Run Python Script:
+  Run-Python-Script:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
