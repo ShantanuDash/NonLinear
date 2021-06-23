@@ -7,6 +7,10 @@ on:
         description: 'Name of the input file(with extention)'
         default: 'file.py'
         required: true
+      output-file:
+        description: 'Name of the output file(with extention)'
+        default: 'out.jpg'
+        required: true
 
 jobs:
   Run-Python-Script:
@@ -23,13 +27,11 @@ jobs:
       - run: pip install matplotlib
       - run: pip install numpy
       - run: sudo mkdir output
-      - run: sudo cp ${{ github.event.inputs.file-name }} output
-      - run: |
-          cd output
-          sudo python ${{ github.event.inputs.file-name }}
-      #- run: sudo cp phase.jpg output
+      
+      - run: python ${{ github.event.inputs.file-name }}
+      - run: sudo cp ${{ github.event.inputs.output-file }} output
       - name: upload img
         uses: actions/upload-artifact@v2
         with:
-          name: IMG
-          path: output/
+          name: Output-Image
+          path: output/${{ github.event.inputs.output-file }}
