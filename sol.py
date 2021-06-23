@@ -28,11 +28,11 @@ def evaluate(X,Y,U,V,epsilon1,epsilon2,b=1,p=1,C=1,w=5):
     u_dot = e3.subs([(x,X),(y,Y),(u,U),(v,V),(beta,b),(rho,p),(c,C),(omega,w),(ep1,epsilon1),(ep2,epsilon2)])
     v_dot = e4.subs([(x,X),(y,Y),(u,U),(v,V),(beta,b),(rho,p),(c,C),(omega,w),(ep1,epsilon1),(ep2,epsilon2)])
         
-    return x_dot, y_dot, u_dot, v_dot
+    return x_dot.evalf(), y_dot.evalf(), u_dot.evalf(), v_dot.evalf()
     
     # basic parameters
-delta_t = 0.01 
-steps = 100000
+delta_t = 0.001 
+steps = 10000
 
 # initialize solutions arrays (+1 for initial conditions)
 xx = np.empty((steps + 1))
