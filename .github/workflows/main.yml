@@ -1,11 +1,11 @@
 name: compile-jpg
 
-on:
+on: [workflow_dispatch]
   #page_build:
   #pull_request:
-  push:
-    branches:
-      - main
+  #push:
+    #branches:
+      #- main
 
 jobs:
   build:
