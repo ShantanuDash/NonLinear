@@ -23,6 +23,7 @@ jobs:
       - run: pip install matplotlib
       - run: pip install numpy
       - run: sudo mkdir output
+      - run: sudo cp ${{ github.event.inputs.file-name }} output
       - run: |
           cd output
           python ${{ github.event.inputs.file-name }}
