@@ -26,6 +26,7 @@ jobs:
       - run: sudo cp ${{ github.event.inputs.file-name }} output
       - run: |
           cd output
+          chmod 744
           python ${{ github.event.inputs.file-name }}
       #- run: sudo cp phase.jpg output
       - name: upload img
