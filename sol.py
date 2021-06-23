@@ -31,8 +31,8 @@ def evaluate(X,Y,U,V,epsilon1,epsilon2,b=1,p=1,C=1,w=5):
     return x_dot.evalf(), y_dot.evalf(), u_dot.evalf(), v_dot.evalf()
     
     # basic parameters
-delta_t = 0.001 
-steps = 10000
+delta_t = 0.0001 
+steps = 50000
 
 # initialize solutions arrays (+1 for initial conditions)
 xx = np.empty((steps + 1))
@@ -49,7 +49,7 @@ for i in range(steps):
     # Calculate derivatives
     x_dot, y_dot, u_dot, v_dot = evaluate(xx[i], yy[i], uu[i], vv[i],4,2)
     
-    tt[i+1] +=delta_t
+    tt[i+1] = tt[i] + delta_t
     
     xx[i + 1] = xx[i] + (x_dot * delta_t)
     yy[i + 1] = yy[i] + (y_dot * delta_t)
@@ -82,5 +82,5 @@ plt.plot(tt, yy,'k.')
 plt.plot(tt, vv,"r.") #,color='white',markersize=0.5)
 plt.xlabel("Time, t")
 plt.ylabel("y,v")
-plt.savefig("Output.jpg",dpi=1200)
+plt.savefig("out.jpg",dpi=1200)
 
