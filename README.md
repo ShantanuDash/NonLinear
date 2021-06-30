@@ -5,4 +5,6 @@ Nonlinear dynamics files
 <!-- #%<iframe src="https://shantanu.rocks/NonLinear/name.html" width="100%" height="1000"></iframe>n -->
 ## [Find attractors files here.(Confused? Just click this line)](https://shantanu.rocks/NonLinear/attractors.html)
 
+## [Lyaponov Calculation](https://shantanu.rocks/NonLinear/lyapnov.html)
+
 ## [Back to the main site? Click here.](https://shantanu.rocks)
