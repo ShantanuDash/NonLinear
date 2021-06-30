@@ -29,6 +29,7 @@ jobs:
       - run: sudo mkdir output
       
       - run: python ${{ github.event.inputs.file-name }}
+      - run: ls
       - run: sudo cp ${{ github.event.inputs.output-file }} output
       - name: setup git config
         run: |
