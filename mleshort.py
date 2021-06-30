@@ -99,7 +99,7 @@ for p in xaxis:
 
 	plt.plot(t1,logd,'b.',label="$log_{e}(d1/d0)$",markersize=0.8)
 	plt.plot(t1[:till],predict(t1[:till]),'r--',label=f"{model[0]}*x+{model[1]}")
-	plt.title(f"$log_{e}(d/d0)$ VS Time , p={p}, d0={d0}")
+			plt.title("$log_{e}(d/d0)$ VS Time ," + f" p={p}, d0={d0}")
 	plt.xlabel("Time")
 	plt.ylabel("$log_{e}(d/d0)$")
 	plt.legend()
