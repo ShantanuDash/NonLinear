@@ -24,7 +24,7 @@ e4=-rho*beta*u-c*v+ep2*x
 
 def compute(x0,y0,u0,v0,t0,pee=1,steps=1000,delta_t=0.01):
     # define equation
-    def evaluate(X,Y,U,V,epsilon1=6,epsilon2=8,b=1,p=1,C=1,w=5):
+    def evaluate(X,Y,U,V,epsilon1=6,epsilon2=8,b=1,p=pee,C=1,w=5):
         x_dot = e1.subs([(x,X),(y,Y),(u,U),(v,V),(beta,b),(rho,p),(c,C),(omega,w),(ep1,epsilon1),(ep2,epsilon2)])
         y_dot = e2.subs([(x,X),(y,Y),(u,U),(v,V),(beta,b),(rho,p),(c,C),(omega,w),(ep1,epsilon1),(ep2,epsilon2)])
         u_dot = e3.subs([(x,X),(y,Y),(u,U),(v,V),(beta,b),(rho,p),(c,C),(omega,w),(ep1,epsilon1),(ep2,epsilon2)])
@@ -93,13 +93,13 @@ for p in xaxis:
 	plt.subplot(2,1,2)
 
 	logd=[np.log(d/d0) for d in d1]
-	till=1500
+	till=steps
 	model=np.polyfit(t1[:till],logd[:till],1)
 	predict=np.poly1d(model)
 
 	plt.plot(t1,logd,'b.',label="$log_{e}(d1/d0)$",markersize=0.8)
 	plt.plot(t1[:till],predict(t1[:till]),'r--',label=f"{model[0]}*x+{model[1]}")
-	plt.title("$log_{e}(d/d0)$ VS Time , p={p}, d0={d0}")
+	plt.title(f"$log_{e}(d/d0)$ VS Time , p={p}, d0={d0}")
 	plt.xlabel("Time")
 	plt.ylabel("$log_{e}(d/d0)$")
 	plt.legend()
