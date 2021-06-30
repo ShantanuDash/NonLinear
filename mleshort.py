@@ -103,7 +103,7 @@ for p in xaxis:
 	plt.xlabel("Time")
 	plt.ylabel("$log_{e}(d/d0)$")
 	plt.legend()
-	plt.savefig(f"lyapunov{p}.png",dpi=800)
+	plt.savefig(f"{p}.png",dpi=120)
 	mle.append(model[0])
 
 np.savetxt('out.txt', (xaxis, mle))
