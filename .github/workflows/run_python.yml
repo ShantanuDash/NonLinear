@@ -8,7 +8,7 @@ on:
         default: 'file.py'
         required: true
       output-file:
-        description: 'Name of the output file(with extention)'
+        description: 'Name of the output file(with extention) or multiple files separated by commas'
         default: 'out.jpg'
         required: true
 
@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Output-Image
-          path: output/${{ github.event.inputs.output-file }}
+          path: output/
