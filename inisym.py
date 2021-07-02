@@ -54,9 +54,9 @@ def compute(x0,y0,u0,v0,t0,epsilon1=6,epsilon2=8,b=1,p=1,C=1,w=5,steps=1000,delt
 
 #xaxis=np.linspace(-4,4,)
 for P in range(-4,5):
-	n=1e9
+	n=2e3
 	n=int(n)
-	dt=0.001
+	dt=0.01
 	x1,y1,u1,v1,t1=compute(0.1,0,0,0,0.0,p=P,steps=n,delta_t=dt)
 	summation1=0.0
 	summation2=0.0
