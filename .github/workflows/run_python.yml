@@ -26,25 +26,25 @@ jobs:
       - run: pip install sympy
       - run: pip install matplotlib
       - run: pip install numpy
-      - run: sudo mkdir output
+      - run: sudo mkdir result
       
       - run: python ${{ github.event.inputs.file-name }}
       - run: ls
       - run: sudo cp ${{ github.event.inputs.output-file }} output
-      - name: setup git config
-        run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-          git pull origin main
-      - name: commit
-        run: |
-          # Stage the file, commit and push
-          git add output
-          git commit -m "images uploaded automatically"
-          git push origin main
+#       - name: setup git config
+#         run: |
+#           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+#           git config user.name "GitHub Actions Bot"
+#           git config user.email "<>"
+#           git pull origin main
+#       - name: commit
+#         run: |
+#           # Stage the file, commit and push
+#           git add output
+#           git commit -m "images uploaded automatically"
+#           git push origin main
       - name: upload img
         uses: actions/upload-artifact@v2
         with:
           name: Output-Image
-          path: output/
+          path: result/
