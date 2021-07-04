@@ -32,7 +32,7 @@ jobs:
       - run: ls
       
       - run: sudo apt-get install gnuplot
-      - run: sudo paste x.txt,y.txt,z.txt > pl.dat
+      - run: sudo paste x.txt y.txt z.txt > pl.dat
       - run: gnuplot plot.p
       - run: sudo cp *.png result
       - name: upload img
