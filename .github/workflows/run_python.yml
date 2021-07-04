@@ -10,7 +10,7 @@ on:
       output-file:
         description: 'Name of the output file(with extention) or multiple files separated by commas'
         default: 'out.jpg'
-        required: true
+        required: false
 
 jobs:
   Run-Python-Script:
@@ -30,19 +30,11 @@ jobs:
       
       - run: python ${{ github.event.inputs.file-name }}
       - run: ls
-      - run: sudo cp ${{ github.event.inputs.output-file }} result
-#       - name: setup git config
-#         run: |
-#           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-#           git config user.name "GitHub Actions Bot"
-#           git config user.email "<>"
-#           git pull origin main
-#       - name: commit
-#         run: |
-#           # Stage the file, commit and push
-#           git add output
-#           git commit -m "images uploaded automatically"
-#           git push origin main
+      
+      - run: sudo apt-get install gnuplot
+      - run: sudo paste x.txt,y.txt,z.txt > pl.dat
+      - run: gnuplot plot.p
+      - run: sudo cp *.png result
       - name: upload img
         uses: actions/upload-artifact@v2
         with:
