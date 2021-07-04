@@ -46,10 +46,10 @@ def compute(x0,y0,z0,t0,steps=1000,delta_t=0.01):
 	return xx,yy,zz,tt
 
 
-n=2e4
+n=2e7
 n=int(n)
 dt=0.01
-x1,y1,z1,t1=compute(0.1,0,0,0,steps=n,delta_t=dt)
+x1,y1,z1,t1=compute(1.0,1.0,1.0,0,steps=n,delta_t=dt)
 summation1=0.0
 summation2=0.0
 summation3=0.0
