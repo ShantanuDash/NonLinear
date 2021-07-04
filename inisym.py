@@ -14,7 +14,7 @@ def evaluate(x,y,z):
    
     x_dot = p*(y-x)
     y_dot = -x*z + r*x - y
-    y_dot = x*y - b*z
+    z_dot = x*y - b*z
 
     return x_dot, y_dot, z_dot
 
@@ -45,32 +45,31 @@ def compute(x0,y0,z0,t0,steps=1000,delta_t=0.01):
 		
 	return xx,yy,zz,tt
 
-#xaxis=np.linspace(-4,4,)
-for P in range(1):
-	n=2e4
-	n=int(n)
-	dt=0.01
-	x1,y1,z1,t1=compute(0.1,0,0,0,steps=n,delta_t=dt)
-	summation1=0.0
-	summation2=0.0
-        summation3=0.0
-	k=0
-	for i in range(1,n+1):
-		k=k+1
-		summation1=summation1+ np.log(np.abs((x1[i]-x1[i-1])/dt))
-		summation2=summation2+ np.log(np.abs((y1[i]-y1[i-1])/dt))
-                summation3=summation3+ np.log(np.abs((z1[i]-z1[i-1])/dt))
-	lamda=[]
-	lamda.append(summation1/k)
-	lamda.append(summation2/k)
-        lamda.append(summation3/k)
-	print(f"lamda1_p_{P}=", lamda[0])
-	print(f"lamda2_p_{P}=", lamda[1])
-        print(f"lamda3_p_{P}=", lamda[2])
 
-	np.savetxt(f'x_{P}.txt', (x1))
-	np.savetxt(f'y_{P}.txt', (y1))
-        np.savetxt(f'y_{P}.txt', (z1))
+n=2e4
+n=int(n)
+dt=0.01
+x1,y1,z1,t1=compute(0.1,0,0,0,steps=n,delta_t=dt)
+summation1=0.0
+summation2=0.0
+summation3=0.0
+k=0
+for i in range(1,n+1):
+	k=k+1
+	summation1=summation1+ np.log(np.abs((x1[i]-x1[i-1])/dt))
+	summation2=summation2+ np.log(np.abs((y1[i]-y1[i-1])/dt))
+	summation3=summation3+ np.log(np.abs((z1[i]-z1[i-1])/dt))
+lamda=[]
+lamda.append(summation1/k)
+lamda.append(summation2/k)
+lamda.append(summation3/k)
+print("lamdax=", lamda[0])
+print("lamday=", lamda[1])
+print("lamdaz=", lamda[2])
+
+np.savetxt('x.txt', (x1))
+np.savetxt('y.txt', (y1))
+np.savetxt('y.txt', (z1))
 
 
 	
