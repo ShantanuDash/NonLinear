@@ -48,7 +48,7 @@ def compute(x0,y0,z0,t0,steps=1000,delta_t=0.01):
 
 n=2e7
 n=int(n)
-dt=0.01
+dt=0.001
 x1,y1,z1,t1=compute(1.0,1.0,1.0,0,steps=n,delta_t=dt)
 summation1=0.0
 summation2=0.0
@@ -69,7 +69,7 @@ print("lamdaz=", lamda[2])
 
 np.savetxt('x.txt', (x1))
 np.savetxt('y.txt', (y1))
-np.savetxt('y.txt', (z1))
+np.savetxt('z.txt', (z1))
 
 
 	
