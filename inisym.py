@@ -13,7 +13,7 @@ b = 4.0
 def evaluate(x,y,z):
    
     x_dot = p*(y-x)
-    y_dot = -x"z + r*x - y
+    y_dot = -x*z + r*x - y
     y_dot = x*y - b*z
 
     return x_dot, y_dot, z_dot
