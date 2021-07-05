@@ -46,7 +46,7 @@ def compute(x0,y0,z0,t0,steps=1000,delta_t=0.01):
 	return xx,yy,zz,tt
 
 
-n=2e7
+n=1e8
 n=int(n)
 dt=0.001
 x1,y1,z1,t1=compute(1.0,1.0,1.0,0,steps=n,delta_t=dt)
@@ -54,7 +54,7 @@ summation1=0.0
 summation2=0.0
 summation3=0.0
 k=0
-for i in range(1,n+1):
+for i in range(1,n):
 	k=k+1
 	summation1=summation1+ np.log(np.abs((x1[i]-x1[i-1])/dt))
 	summation2=summation2+ np.log(np.abs((y1[i]-y1[i-1])/dt))
@@ -63,9 +63,13 @@ lamda=[]
 lamda.append(summation1/k)
 lamda.append(summation2/k)
 lamda.append(summation3/k)
-print("lamdax=", lamda[0])
-print("lamday=", lamda[1])
-print("lamdaz=", lamda[2])
+print("lamda_x=", lamda[0])
+print("lamda_y=", lamda[1])
+print("lamda_z=", lamda[2])
+
+print("lamda_2_x=", lamda[0]/np.log(2))
+print("lamda_2_y=", lamda[1]/np.log(2))
+print("lamda_2_z=", lamda[2]/np.log(2))
 
 np.savetxt('x.txt', (x1))
 np.savetxt('y.txt', (y1))
