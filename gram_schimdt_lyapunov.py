@@ -44,6 +44,7 @@ zz=z[2]
 # ax.set_zlabel("Z Axis")
 # ax.set_title("Lorenz Attractor");
 # ax.view_init(30, 120)
+np.savetxt('out.txt', (xx,yy,zz))
 
 r1 = np.zeros(100000-1)
 r2 = np.zeros(100000-1)
@@ -51,8 +52,13 @@ r3 = np.zeros(100000-1)
 dt=15.0/100000
 for i in range(100000-1):
   r1[i]=(np.log(abs((xx[i]-xx[i+1])/dt)))
-  lambdas=(np.mean(result))
-print(lambdas)
+  r2[i]=(np.log(abs((yy[i]-yy[i+1])/dt)))
+  r3[i]=(np.log(abs((zz[i]-zz[i+1])/dt)))
+l1=(np.mean(r1))
+l2=(np.mean(r2))
+l3=(np.mean(r3))
+print(l1,l2,l3)
+np.savetxt('lyap.txt',([l1,l2,l3]))
 
 
 
